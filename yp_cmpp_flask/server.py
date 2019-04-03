@@ -11,8 +11,8 @@ def index():
 
 @app.route('/send', methods=['POST'])
 def send():
-    print(request.form.get('userName'))
-    un = request.form.get('userName')
+    print(request.form.get('username'))
+    un = request.form.get('username')
     pwd = request.form.get('password')
     mobile = request.form.get('mobile')
     content = request.form.get('content')
@@ -32,5 +32,5 @@ def send():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=5001)
 
