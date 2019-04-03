@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cmpp客户端</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        function send() {
+            $.ajax({
+            //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/send" ,//url
+                data: $('#form1').serialize(),
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    if (result.result == 'ok') {
+                        alert("发送短信成功");
+                    }
+                    else {
+                        alert(result.result)
+                    }
+                    ;
+                },
+                error : function(err) {
+                    console.log('error');
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<div id="form-div">
+    <h2>cmpp客户端</h2>
+    <form id="form1" onsubmit="return false" action="##" method="post">
+        <p>账 号(6位)：<br><input name="userName" type="text" tabindex="1" size="15" value=""/></p>
+        <p>密 码：<br><input name="password" type="password" tabindex="2" size="16" value=""/></p>
+        <p>手机号：<br><input name="mobile" type="text" tabindex="1" size="16" value=""/></p>
+        <p>短信内容(模版不匹配不会返回失败)：<br><input name="content" type="text" tabindex="1" size="30" value="【】您的验证码是1234"/></p>
+        <p><input type="button" value="发送" onclick="send()"></p>
+    </form>
+    <div><span style="color:red">发送失败状态码</span><br><img src="../static/1.jpg" height="200"></div>
+    <br><br>
+    <div><span style="color:red">登陆失败状态码</span><br><img src="../static/2.jpg" height="200"></div>
+</div>
+
+</body>
+</html>
