@@ -1,0 +1,8 @@
+uwsgi:
+        socket: 0.0.0.0:8002
+        chdir: /usr/local/yp_cmpp_server/yp_cmpp/yp_cmpp_flask
+        wsgi-file: /usr/local/yp_cmpp_server/yp_cmpp/yp_cmpp_flask/server.py
+        callable: app
+        processes: 8
+        thread: 4
+
